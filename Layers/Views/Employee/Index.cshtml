@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Layers.Core.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Employee List</h1>
+<p>
+    <a asp-action="Create" class="btn btn-primary my-3">Create</a>
+</p>
+
+<table class="table table-dark table-responsive-lg mb-4" id="myTable">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>Position</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.FName</td>
+                <td>@employee.LName</td>
+                <td>@employee.Age</td>
+                <td>@employee.Salary</td>
+                <td>@employee.Position</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@employee.EmployeeId" class="btn btn-secondary me-1">Edit</a>
+                    <a asp-action="Details" asp-route-id="@employee.EmployeeId" class="btn btn-info me-1">Details</a>
+                    <a asp-action="Delete" asp-route-id="@employee.EmployeeId" class="btn btn-danger me-1">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
